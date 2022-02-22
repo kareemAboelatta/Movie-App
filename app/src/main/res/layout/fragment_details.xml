@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/backgroundColor"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/poster_path"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:src="@drawable/image"
+                android:contentDescription="@null"
+                app:layout_constraintTop_toTopOf="parent"
+                android:scaleType="fitXY"
+                />
+
+            <ImageButton
+                android:id="@+id/ivFav"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="16dp"
+                android:background="@null"
+                android:contentDescription="@null"
+                android:elevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_favorite_30"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="15dp"
+            app:cardCornerRadius="15dp"
+            android:layout_margin="10dp"
+            android:background="@color/backgroundColor"
+            app:cardBackgroundColor="@color/backgroundColor_"
+            android:padding="2dp"
+            >
+            <TextView
+                android:id="@+id/original_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Spider-Man: No Way Home"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/opacityWhiteColor"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_margin="6dp"
+            android:text="2021-12-15"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/opacityWhiteColor"
+            android:layout_gravity="center"
+            />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rating"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/opacityWhiteColor"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:labelFor="@id/linear_rating"
+            android:layout_margin="3dp"
+            />
+        <LinearLayout
+            android:id="@+id/linear_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            >
+
+
+            <TextView
+                android:id="@+id/vote_average_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="7.5 / 10"
+                android:layout_weight="3"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <RatingBar
+                android:id="@+id/rating_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rating="7.5"
+                android:numStars="10"
+                android:progressTint="@color/yellow"
+                android:progressBackgroundTint="@color/white"
+                android:foregroundTint="@color/white"
+                android:secondaryProgressTint="@color/yellow"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_margin="7dp"
+
+                />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Overview"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/opacityWhiteColor"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:labelFor="@id/overview"
+            android:layout_margin="3dp"
+            />
+        <TextView
+            android:id="@+id/overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:ems="25"
+            android:layout_margin="3dp"
+            android:text="Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man."
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cast"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/opacityWhiteColor"
+            android:textStyle="bold"
+            android:textSize="23sp"
+            android:labelFor="@id/recyclerViewCast"
+            android:layout_margin="5dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="8dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/top_rated_and_upcoming_movie_item" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trailer"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/opacityWhiteColor"
+            android:textStyle="bold"
+            android:textSize="23sp"
+            android:labelFor="@id/constraint_trailer"
+            android:layout_margin="5dp"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_trailer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/backdrop_path"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:src="@drawable/image"
+                android:scaleType="fitXY"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                app:srcCompat="@drawable/gradient_bg"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_trailer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:clickable="true"
+                android:src="@drawable/ic_play"
+                android:tint="@color/black"
+                android:backgroundTint="@color/yellow"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/adults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:text="This movie for adults only."
+                android:layout_margin="7dp"
+                android:layout_gravity="center"
+                />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Original language: "
+                android:textStyle="italic"
+                android:textColor="@color/white"
+                android:layout_margin="5dp"
+                />
+            <TextView
+                android:id="@+id/original_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="en"
+                android:layout_margin="5dp"
+
+                />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

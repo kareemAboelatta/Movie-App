@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.movie.ui.fragments.MainFragment"
+        android:label="Recommended movies"
+         >
+        <action
+            android:id="@+id/action_mainFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_searchFragment"
+            app:destination="@id/movieSearchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.movie.ui.fragments.DetailsFragment"
+        android:label="Details ">
+        <argument
+            android:name="movie"
+            app:argType="com.example.movie.data.Movie" />
+        <action
+            android:id="@+id/action_detailsFragment_to_castDetailsFragment"
+            app:destination="@id/castDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/castDetailsFragment"
+        android:name="com.example.movie.ui.fragments.CastDetailsFragment"
+        android:label="fragment_cast_details"
+        >
+        <argument
+            android:name="cast"
+            app:argType="com.example.movie.data.cast.Cast" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieSearchFragment"
+        android:name="com.example.movie.ui.fragments.SearchFragment"
+        android:label="Search"
+        >
+        <action
+            android:id="@+id/action_searchFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+
+
+</navigation>

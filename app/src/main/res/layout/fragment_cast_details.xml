@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.CastDetailsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <androidx.cardview.widget.CardView
+            android:layout_width="250dp"
+            android:layout_height="220dp"
+            android:elevation="12dp"
+            app:cardElevation="12dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="35dp">
+
+            <ImageView
+                android:id="@+id/castImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/backgroundColor"
+                android:src="@drawable/image"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/castName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Tom Hardy"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/castCharacter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Spider man"
+            android:textColor="@color/yellow"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="4dp"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Biography"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/opacityWhiteColor"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:labelFor="@id/overview"
+            android:layout_margin="5dp"
+            />
+        <TextView
+            android:id="@+id/castBio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:ems="25"
+            android:layout_margin="3dp"
+            android:text="Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man."
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Birthday"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/opacityWhiteColor"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:labelFor="@id/castBirthday"
+            android:layout_margin="5dp"
+            />
+        <TextView
+            android:id="@+id/castBirthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_margin="3dp"
+            android:text="1996-06-01"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place of birth"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/opacityWhiteColor"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:labelFor="@id/castBirthday"
+            android:drawableEnd="@drawable/ic_location"
+            android:layout_margin="5dp"
+            />
+        <TextView
+            android:id="@+id/castPlace_of_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_margin="3dp"
+            android:text="Surrey, England, UK"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Popularity"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/opacityWhiteColor"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:labelFor="@id/castBirthday"
+            android:layout_margin="5dp"
+            />
+        <TextView
+            android:id="@+id/castPopularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/yellow"
+            android:layout_margin="10dp"
+            android:text="127.956"
+            android:drawableEnd="@drawable/ic_people"
+
+
+            />
+    </LinearLayout>
+
+
+
+</ScrollView>
