@@ -6,6 +6,7 @@ Movie app from TMDB's API
 	search for movies.
  	Watch trailers(YouTubePlayer).
 	and all of these in One Activity  (one activity app)
+	Handle crashes and errors whrn any state of netowrk 
 	
 	
 # Tools:
