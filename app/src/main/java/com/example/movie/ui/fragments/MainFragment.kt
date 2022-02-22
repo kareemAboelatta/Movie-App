@@ -3,6 +3,7 @@ package com.example.movie.ui.fragments
 import android.os.Bundle
 import android.view.*
 import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
@@ -13,6 +14,7 @@ import com.example.movie.R
 import com.example.movie.adapter.AdapterPopularMovie
 import com.example.movie.adapter.AdapterTopRatedAndUpComing
 import com.example.movie.ui.MainViewModel
+import com.example.movie.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
@@ -33,22 +35,36 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     lateinit var glide: RequestManager
 
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //actionBar
 
 
-        viewModel.mostPopularMovies.observe(viewLifecycleOwner,{response ->
-            hidePopularShimmer()
-            response.body()?.let { response ->
-                mostPapularAdapter.differ.submitList(response.results)
-                recyclerViewPopular.apply {
-                    adapter = mostPapularAdapter
-                    setHasFixedSize(true)
+
+        viewModel.mostPopularMovies.observe(viewLifecycleOwner, { response ->
+            when(response) {
+                is Resource.Success -> {
+                    hidePopularShimmer()
+                    response.data?.let { response ->
+                        mostPapularAdapter.differ.submitList(response.results)
+                        recyclerViewPopular.apply {
+                            adapter = mostPapularAdapter
+                            setHasFixedSize(true)
+                        }
+                    }
+                }
+                is Resource.Error -> {
+                    hidePopularShimmer()
+                    response.message?.let { message ->
+                        Toast.makeText(activity, "An error occurred: $message", Toast.LENGTH_LONG).show()
+                        showError(message)
+                    }
+                }
+                is Resource.Loading -> {
+                    showPopularShimmer()
                 }
             }
         })
-
         mostPapularAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putSerializable("movie", it)
@@ -59,13 +75,26 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             )
         }
 
-        viewModel.topRatedMovies.observe(viewLifecycleOwner,{response ->
-            hideTopRatedShimmer()
-            response.body()?.let { response ->
-                topRatedAdapter.differ.submitList(response.results)
-                recyclerViewTopRated.apply {
-                    adapter = topRatedAdapter
-                    setHasFixedSize(true)
+        viewModel.topRatedMovies.observe(viewLifecycleOwner, { response ->
+            when(response) {
+                is Resource.Success -> {
+                    hideTopRatedShimmer()
+                    response.data?.let { response ->
+                        topRatedAdapter.differ.submitList(response.results)
+                        recyclerViewTopRated.apply {
+                            adapter = topRatedAdapter
+                            setHasFixedSize(true)
+                        }
+                    }
+                }
+                is Resource.Error -> {
+                    hideTopRatedShimmer()
+                    response.message?.let { message ->
+                        showError(message)
+                    }
+                }
+                is Resource.Loading -> {
+                    showTopRatedShimmer()
                 }
             }
         })
@@ -78,13 +107,27 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 bundle
             )
         }
-        viewModel.upComingMovies.observe(viewLifecycleOwner,{response ->
-            hideUpComingShimmer()
-            response.body()?.let { response ->
-                upComingAdapter.differ.submitList(response.results)
-                recyclerViewUpComing.apply {
-                    adapter = upComingAdapter
-                    setHasFixedSize(true)
+
+        viewModel.upComingMovies.observe(viewLifecycleOwner, { response ->
+            when(response) {
+                is Resource.Success -> {
+                    hideUpComingShimmer()
+                    hideError()
+                    response.data?.let { response ->
+                        upComingAdapter.differ.submitList(response.results)
+                        recyclerViewUpComing.apply {
+                            adapter = upComingAdapter
+                            setHasFixedSize(true)
+                        }
+                    }
+                }
+                is Resource.Error -> {
+                    hideUpComingShimmer()
+                    response.message?.let { message ->
+                        showError(message)                    }
+                }
+                is Resource.Loading -> {
+                     showUpComingShimmer()
                 }
             }
         })
@@ -98,24 +141,56 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             )
         }
 
+
+        btnRetry.setOnClickListener {
+            viewModel.getDataAgain()
+        }
         setHasOptionsMenu(true)
     }
 
 
+    private fun showUpComingShimmer() {
+         shimmerFrameLayoutUpComing.startShimmer()
+         shimmerFrameLayoutUpComing.visibility = VISIBLE
+         recyclerViewUpComing.visibility = View.GONE
+    }
     private fun hideUpComingShimmer() {
-         shimmerFrameLayoutUpComing.stopShimmer()
-         shimmerFrameLayoutUpComing.visibility = View.GONE
-         recyclerViewUpComing.visibility = View.VISIBLE
+        shimmerFrameLayoutUpComing.stopShimmer()
+        shimmerFrameLayoutUpComing.visibility = View.GONE
+        recyclerViewUpComing.visibility = VISIBLE
+    }
+
+    private fun showTopRatedShimmer() {
+         shimmerFrameLayoutTopRated.startShimmer()
+         shimmerFrameLayoutTopRated.visibility = VISIBLE
+         recyclerViewTopRated.visibility = View.GONE
     }
     private fun hideTopRatedShimmer() {
          shimmerFrameLayoutTopRated.stopShimmer()
          shimmerFrameLayoutTopRated.visibility = View.GONE
-         recyclerViewTopRated.visibility = View.VISIBLE
+         recyclerViewTopRated.visibility = VISIBLE
+    }
+
+    private fun showPopularShimmer() {
+         shimmerFrameLayoutPopular.startShimmer()
+         shimmerFrameLayoutPopular.visibility = VISIBLE
+         recyclerViewPopular.visibility = View.GONE
     }
     private fun hidePopularShimmer() {
          shimmerFrameLayoutPopular.stopShimmer()
          shimmerFrameLayoutPopular.visibility = View.GONE
          recyclerViewPopular.visibility = VISIBLE
+    }
+
+
+    private fun showError(error:String){
+        textViewError.visibility=VISIBLE
+        textViewError.text=error
+        btnRetry.visibility=VISIBLE
+    }
+    private fun hideError(){
+        textViewError.visibility=View.GONE
+        btnRetry.visibility=View.GONE
     }
 
 
@@ -136,16 +211,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
           shimmerFrameLayoutPopular.startShimmer()
           shimmerFrameLayoutTopRated.startShimmer()
           shimmerFrameLayoutUpComing.startShimmer()
-
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val actionBar = (activity as AppCompatActivity).supportActionBar
-        actionBar?.elevation = 0F
-        actionBar?.title="Recommended movies"
-
     }
 
     override fun onPause() {

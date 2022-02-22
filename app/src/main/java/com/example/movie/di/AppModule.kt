@@ -29,6 +29,9 @@ object AppModule {
     @Provides
     fun provideTestString1() = "This is a string we will inject"
 
+    @Singleton
+    @Provides
+    fun provideContext(@ApplicationContext context: Context) = context
 
 
     @Singleton
