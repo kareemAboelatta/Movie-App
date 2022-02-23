@@ -2,7 +2,7 @@
 Movie app from TMDB's API
 # Features:
  	Discover the most popular, the top rated and the upcoming movies and watch details of this movie.
-	Discover actors in specific movie search for movies and his details.
+	Discover actors in specific movie.
 	search for movies.
  	Watch trailers(YouTubePlayer).
 	and all of these in One Activity  (one activity app)
