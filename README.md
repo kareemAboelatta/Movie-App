@@ -27,7 +27,7 @@ Movie app from TMDB's API
 > to get started put your API_Key & Youtube_API_key in utils/Constants class before you run the app.
 
 # Sammary video for this app on LinkedIn:
-https://www.linkedin.com/posts/kareem-abouelatta-893080203_youtube-android-kotlin-activity-6901641602176036864-11kU
+https://www.linkedin.com/posts/kareem-aboelatta-893080203_youtube-android-kotlin-activity-6901641602176036864-gsmx
 	
 
 	
