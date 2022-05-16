@@ -7,6 +7,19 @@ Movie app from TMDB's API
 - Watch trailers(YouTubePlayer).
 - and all of these in One Activity  (one activity app)
 - Handle crashes and errors whrn any state of netowrk 
+
+
+
+
+# Overview Gifs
+<img src="https://user-images.githubusercontent.com/62241386/168585320-d93b3856-1898-496f-90b3-469d16120262.gif" width="200">&nbsp; 
+<img src="https://user-images.githubusercontent.com/62241386/168584578-f3a283b1-74a7-4109-bda9-1d38b066af7d.gif" width="200">&nbsp; 
+
+
+# Youtube Player
+<img src="https://user-images.githubusercontent.com/62241386/168585320-d93b3856-1898-496f-90b3-469d16120262.gif" width="200">&nbsp; 
+
+
 	
 	
 # Tools:
@@ -20,7 +33,7 @@ Movie app from TMDB's API
 - YouTubePlayer
 - Shimmer
 - Glide
-- Animation
+- Normal animation
 - DiffUtil
 	
 # Note:
