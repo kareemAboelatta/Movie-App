@@ -12,7 +12,7 @@ Movie app from TMDB's API
 
 
 # Overview Gifs
-<img src="https://user-images.githubusercontent.com/62241386/168585320-d93b3856-1898-496f-90b3-469d16120262.gif" width="200">&nbsp; 
+<img src="https://user-images.githubusercontent.com/62241386/168584920-f382a664-062e-4fc2-8d93-b905d448d701.gif" width="200">&nbsp; 
 <img src="https://user-images.githubusercontent.com/62241386/168584578-f3a283b1-74a7-4109-bda9-1d38b066af7d.gif" width="200">&nbsp; 
 
 
